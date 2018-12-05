@@ -46,7 +46,7 @@ public class TeamTasks {
 
 	private static int scode = 33;
 
-	// @Scheduled(initialDelay = 1000, fixedDelay = 5)
+	@Scheduled(cron ="0 30 21 * * *")
 	public void runTeamDetail() throws Exception {
 		if (scode == 27) {
 			System.exit(0);

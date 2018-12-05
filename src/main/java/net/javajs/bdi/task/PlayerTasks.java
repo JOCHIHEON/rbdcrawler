@@ -62,7 +62,7 @@ public class PlayerTasks {
 	private List<String> tcodes = null;
 	private static int tcodeCnt = 0;
 
-	//@Scheduled(initialDelay = 0, fixedDelay = 500)
+	@Scheduled(cron ="0 30 21 * * *")
 	public void runPlayerDetail() throws IOException {
 		if (tcodes == null) {
 			tcodes = new ArrayList<>();
@@ -77,7 +77,6 @@ public class PlayerTasks {
 		List<Team> teams = new ArrayList<>();
 		List<PlayerDetail> pDtails = players.runPlayerDetail(tcodes.get(tcodeCnt));
 
-		Integer teamPlayers = tRepo.findByTeamPlayers(tcodes.get(tcodeCnt)).getPlayer_info().size();
 		List<Player> player = new ArrayList<>();
 		Team team = null;
 		for (PlayerDetail detail : pDtails) {
