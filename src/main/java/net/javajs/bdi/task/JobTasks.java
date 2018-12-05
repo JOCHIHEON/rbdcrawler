@@ -41,7 +41,7 @@ public class JobTasks {
 	private static Integer startYear = 2018;
 	private int htmlCnt = 0;
 
-	@Scheduled(initialDelay = 0, fixedDelay = 5)
+	//@Scheduled(initialDelay = 0, fixedDelay = 5)
 	public void runJob() throws Exception {
 		if(startYear==2008) {
 			System.exit(0);
