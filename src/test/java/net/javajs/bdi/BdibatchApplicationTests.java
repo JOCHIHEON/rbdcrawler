@@ -30,13 +30,13 @@ public class BdibatchApplicationTests {
 	public void contextLoads() throws IOException {
 		List<Record> recordList = kblcs.crwaling("2018", "11");
 		assertEquals(52, recordList.size());
-		recordList = kblcs.crwaling("2018", "10");
-		assertEquals(38, recordList.size());
-		//rredo.saveAll(recordList);
-		recordList = rredo.findAll();
-		recordList.stream().forEach(r->{
-			log.info("record=>{}",r);
-		});
+//		recordList = kblcs.crwaling("2018", "10");
+//		assertEquals(38, recordList.size());
+//		rredo.saveAll(recordList);
+//		recordList = rredo.findAll();
+//		recordList.stream().forEach(r->{
+//			log.info("record=>{}",r);
+//		});
 	}
 
 }
