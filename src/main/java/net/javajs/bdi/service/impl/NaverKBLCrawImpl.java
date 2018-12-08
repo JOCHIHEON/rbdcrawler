@@ -94,7 +94,6 @@ public class NaverKBLCrawImpl implements NaverKBLCraw {
 		//String pathToChrome = "/home/ec2-user/chromedriver";
 		System.setProperty("webdriver.chrome.driver", pathToChrome);
 		log.info(System.getProperty("webdriver.chrome.driver"));
-		log.info("${System.getenv('HOME')}");
 		cOpt.addArguments("user-agent=" + HEADERVALUE);
 		cOpt.addArguments("headless");
 		driver = new ChromeDriver(cOpt);
