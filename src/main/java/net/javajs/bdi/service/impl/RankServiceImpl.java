@@ -35,14 +35,13 @@ public class RankServiceImpl implements RankService {
 					result(rank,record.getAwayScore(),record.getHomeScore());
 				}
 			}
-			log.info("win lose shift => {} {} {} ", rank.getWin(), rank.getLose(),((double) rank.getWin() / (rank.getWin()+rank.getLose())));
 			double shift = (double) rank.getWin() / (rank.getWin()+rank.getLose());
 			rank.setShift(shift);
 			ranks.add(rank);
 		}
-		Collections.reverse(ranks);
+		Collections.sort(ranks);
 		for(int i=0; i<ranks.size();i++) {
-			ranks.get(i).setRank(i+1);
+			ranks.get(i).setRank(ranks.size()-i);
 		}
 		for(Team team : teams) {
 			for(TeamRank rank : ranks) {
