@@ -75,7 +75,7 @@ public class JobTasks {
 		MONTH.decrementAndGet();
 	}*/
 
-	@Scheduled(cron=" 0 30 6 * * *") //utc 시간 기준
+	@Scheduled(cron=" 0 30 12 * * *") //utc 시간 기준
 	public void runScoreJob() throws Exception {
 		Date date = new Date();
 		SimpleDateFormat month = new SimpleDateFormat("MM");
