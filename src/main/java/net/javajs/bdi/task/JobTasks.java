@@ -2,6 +2,7 @@ package net.javajs.bdi.task;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,17 +82,21 @@ public class JobTasks {
 		SimpleDateFormat year = new SimpleDateFormat("YYYY");
 		List<Record> recordList = kblcs.crwaling(year.format(date), month.format(date));
 		if(recordList!=null) {
-			for(int i=0, max = recordList.size();i<max;i++) {
-				if(rrepo.findByRecord(recordList.get(i).getDate(), recordList.get(i).getHomeName(), recordList.get(i).getAwayName()).size() != 0 ) {
-					recordList.remove(i);
+			Iterator<Record> r = recordList.iterator();
+			while(r.hasNext()) {
+				Record record = r.next();
+				if(rrepo.findByRecord(record.getDate(), record.getHomeName(), record.getAwayName()).size() != 0 ) {
+					r.remove();
 					continue;
 				}//중복 방지
 			}
 			log.info("update score => {}",recordList.size());
-			rrepo.saveAll(recordList);
-			//순위 저장
-			List<Team> rank = ranks.rankSave(recordList);
-			teamrepoMk.ranksUpdate(rank);
+			if(recordList.size()>0) {
+				rrepo.saveAll(recordList);
+				//순위 저장
+				List<Team> rank = ranks.rankSave(recordList);
+				teamrepoMk.ranksUpdate(rank);
+			}
 		}
 	}
 	/*@Scheduled(initialDelay = 0, fixedDelay = 5000)

@@ -26,8 +26,12 @@ public class RankServiceImpl implements RankService {
 		List<TeamRank> ranks = new ArrayList<>();
 		List<Team> teams = teamRepo.findByTeamList();
 		for (Team team : teams) {
-			TeamRank rank  = new TeamRank();
-			rank.setTeamName(team.getTeam_name());
+			TeamRank rank  = null;
+			if( team.getTeamDetail().get(0).getTeamRank()==null) {
+				rank  = new TeamRank();
+			}else {
+				rank  = team.getTeamDetail().get(0).getTeamRank();
+			}
 			for (Record record : recordList) {
 				if (team.getTeam_name().indexOf(record.getHomeName().substring(2)) != -1) {
 					result(rank,record.getHomeScore(),record.getAwayScore());
