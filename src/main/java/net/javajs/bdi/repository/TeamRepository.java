@@ -24,6 +24,12 @@ public interface TeamRepository extends MongoRepository<Team, String>{
 	
 	@Query(value="{'team_code' : ?0}")
 	public Team findByTeamPlayers(String team_code);
+	
+	@Query(value = "{'team_name' : {$regex : ?0, $options: 'i'}}")
+	public Team findByTeams(String team_name);
+	
+	@Query(value = "{}", fields="{ team_code : 1, team_name : 1, teamDetail : 1 }")
+	public List<Team> findByTeamList();
 }
 
 /*{ 'team_code' : ?0, 'player_info' : { '$elemMatch' : { 'player_name' : ?1 } } },  { 'player_info' : { '$elemMatch' : { 'player_name' : ?1 } } }

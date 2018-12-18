@@ -19,4 +19,5 @@ public class TeamDetail {
 	private double teamde_threeptp;
 	private double teamde_ftp;
 	private double teamde_to;
+	private TeamRank teamRank;
 }

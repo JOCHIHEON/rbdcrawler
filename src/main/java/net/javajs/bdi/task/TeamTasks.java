@@ -30,7 +30,7 @@ public class TeamTasks {
 	private static final String[] TEAMCODES = { "16", "35", "55", "50", "30", "65", "60", "70", "06", "10" };
 	private static int codeCnt = 0;
 
-	// @Scheduled(initialDelay=0, fixedDelay=5)
+	//@Scheduled(initialDelay=0, fixedDelay=5)
 	public void runTeamInfo() throws Exception {
 		if (codeCnt == TEAMCODES.length) {
 			System.exit(0);
@@ -46,7 +46,7 @@ public class TeamTasks {
 
 	private static int scode = 33;
 
-	@Scheduled(cron ="0 30 21 * * *")
+	//@Scheduled(initialDelay=0, fixedDelay=5)
 	public void runTeamDetail() throws Exception {
 		if (scode == 27) {
 			System.exit(0);

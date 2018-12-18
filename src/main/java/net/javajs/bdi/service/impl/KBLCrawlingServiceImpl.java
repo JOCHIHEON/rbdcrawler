@@ -8,11 +8,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import net.javajs.bdi.collection.Record;
+import net.javajs.bdi.repository.RecordRepository;
 import net.javajs.bdi.service.KBLCrawlingService;
 
 @Service
@@ -26,6 +28,7 @@ public class KBLCrawlingServiceImpl implements KBLCrawlingService {
 		crawl.away.query.selector=span.team_rgt
 		crwal.score.query.selector=strong.td_score
 	 */
+	
 	@Value("${crawl.target.url}")
 	private String targetUrl;
 	@Value("${crawl.all.query.selector}")

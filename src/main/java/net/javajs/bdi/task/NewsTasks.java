@@ -34,6 +34,6 @@ public class NewsTasks {
 			return;
 		}
 		nRepo.saveAll(newsList);
-		log.info("db cnt, list cnt=> {} {}",nRepo.count(),newsList.size());
+		log.info("db cnt, updateList cnt=> {} {}",nRepo.count(),newsList.size());
 	}
 }

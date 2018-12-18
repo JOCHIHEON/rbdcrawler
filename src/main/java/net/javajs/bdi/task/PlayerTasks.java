@@ -30,10 +30,13 @@ public class PlayerTasks {
 	private List<String> pcodes = null;
 	private static int pcodeCnt = 0;
 
-	// @Scheduled(initialDelay = 0, fixedDelay = 5)
+	//@Scheduled(initialDelay = 0, fixedDelay = 5)
 	public void runPlayerInfo() throws IOException {
 		if (pcodes == null) {
-			pcodes = players.getPcode();
+			pcodes = new ArrayList<>();
+			for(int i=0;i<2;i++) {
+				pcodes.addAll(players.getPcode(i));
+			}	
 		}
 		if (pcodes != null && pcodeCnt == pcodes.size()) {
 			System.exit(0);
@@ -62,7 +65,7 @@ public class PlayerTasks {
 	private List<String> tcodes = null;
 	private static int tcodeCnt = 0;
 
-	@Scheduled(cron ="0 30 21 * * *")
+	//@Scheduled(initialDelay = 0, fixedDelay = 5)
 	public void runPlayerDetail() throws IOException {
 		if (tcodes == null) {
 			tcodes = new ArrayList<>();

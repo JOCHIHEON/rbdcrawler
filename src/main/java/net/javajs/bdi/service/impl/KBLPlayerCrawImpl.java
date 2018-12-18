@@ -23,7 +23,7 @@ public class KBLPlayerCrawImpl implements KBLPlayerCraw {
 
 	@Override
 	public Player playerInfoCraw(String pcode) throws IOException {
-		String urlPer = "http://kbl.or.kr/players/player_info.asp?pcode=";
+		String urlPer = "https://www.kbl.or.kr/players/player_info.asp?pcode=";
 		String urlPost = "&flag1=1&flag2=0&tcode=&sname=";
 		String dl = "dd.pinfotxt_2015>dl>dd";
 		Document doc = Jsoup.connect(urlPer + pcode + urlPost).get();
@@ -54,8 +54,8 @@ public class KBLPlayerCrawImpl implements KBLPlayerCraw {
 	}
 
 	@Override
-	public List<String> getPcode() throws IOException {
-		String url = "http://kbl.or.kr/players/player_list.asp?flag2=0";
+	public List<String> getPcode(int flag2) throws IOException {
+		String url = "https://www.kbl.or.kr/players/player_list.asp?flag2="+flag2;
 		String divs = "div#subcontents>div.seqlist";
 		String teamName = "ul>li";
 		String pcodes = "a[href]";
@@ -80,7 +80,7 @@ public class KBLPlayerCrawImpl implements KBLPlayerCraw {
 
 	@Override
 	public List<PlayerDetail> runPlayerDetail(String tcode) throws IOException {
-		String url = "http://kbl.or.kr/teams/team_record.asp?tcode=";
+		String url = "https://www.kbl.or.kr/teams/team_record.asp?tcode=";
 		String tables = "div#subcontents>table";
 		Document doc = Jsoup.connect(url + tcode).get();
 		Elements tabEles = doc.select(tables);

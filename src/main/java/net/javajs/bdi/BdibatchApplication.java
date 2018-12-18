@@ -13,3 +13,4 @@ public class BdibatchApplication {
 		SpringApplication.run(BdibatchApplication.class, args);
 	}
 }
+///MongoAutoConfiguration.class, MongoDataAutoConfiguration.class

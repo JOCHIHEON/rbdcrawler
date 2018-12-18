@@ -23,7 +23,7 @@ public class KBLTeamCrawImpl implements KBLTeamCraw {
 
 	@Override
 	public Team teamInfoCraw(String team_code) throws IOException {
-		String url = "http://kbl.or.kr/teams/team_info.asp?tcode=";
+		String url = "https://www.kbl.or.kr/teams/team_info.asp?tcode=";
 		String tNameEle = "div>h5";
 		String tInfoEles = "dd>dl>dd";
 		Document doc = Jsoup.connect(url + team_code).get();
@@ -51,7 +51,7 @@ public class KBLTeamCrawImpl implements KBLTeamCraw {
 
 	@Override
 	public List<Map<String, TeamDetail>> teamDetailCraw(Integer scode) throws IOException {
-		String url = "http://kbl.or.kr/stats/part_team_rank.asp?gpart=1&scode=";
+		String url = "https://www.kbl.or.kr/stats/part_team_rank.asp?gpart=1&scode=";
 		String season = "select[name=\"scode\"]>option[selected]";
 		String tBodys = "table>tbody>tr";
 		Document doc = Jsoup.connect(url + scode).get();
